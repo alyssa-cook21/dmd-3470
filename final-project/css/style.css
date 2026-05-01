@@ -1,247 +1,616 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   color: #222;
-  font-size: 1em;
+  font-size: 16px;
   line-height: 1.4;
+  scroll-behavior: smooth;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Color Variables
    ========================================================================== */
+
+:root {
+  --primary-color: #BB33D3;
+  --secondary-color: #7086F6;
+  --gradient-start: #BB33D3;
+  --gradient-end: #7086F6;
+  --text-dark: #102465;
+  --text-light: #6C8493;
+  --white: #ffffff;
+  --bg-light: #f8f9fa;
+}
 
 /* ==========================================================================
-   Helper classes
+   Navigation
    ========================================================================== */
 
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+.navbar {
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%) !important;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+.navbar-brand img {
+  height: 40px;
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
+.navbar-toggler {
+  filter: invert(1);
+}
 
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
+.navbar-nav .nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero-section {
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  color: var(--white);
+}
+
+.brand-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons .btn {
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+  background: var(--white);
+  color: var(--primary-color);
+  border: none;
+}
+
+.hero-buttons .btn-primary:hover {
+  background: var(--text-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.hero-buttons .btn-outline-primary {
+  background: transparent;
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.hero-buttons .btn-outline-primary:hover {
+  background: var(--white);
+  color: var(--primary-color);
+}
+
+.hero-image {
+  max-width: 100%;
   height: auto;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+#lifestyle{
+  color: #1ef4ea;
+}
+
+/* ==========================================================================
+   Features Section
+   ========================================================================== */
+
+.features-section {
+  background: var(--bg-light);
+  padding: 5rem 0;
+}
+
+.features-section h2 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.features-section > .container > .row:first-child p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.feature-card h4 {
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   How It Works Section
+   ========================================================================== */
+
+.how-it-works-section {
+  padding: 5rem 0;
+  background: var(--white);
+  margin-left: 150px;
+}
+
+.how-it-works-section h2 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  margin: auto;
+}
+
+#how {
+  margin-bottom: -80px;
+}
+
+.icon-box-wrapper {
+  padding-right: 2rem;
+}
+
+.icon-box-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.icon-box-icon {
+  flex-shrink: 0;
+  margin-right: 1.5rem;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.icon-circle i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.icon-box-item:hover .icon-circle {
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  border-color: transparent;
+}
+
+.icon-box-item:hover .icon-circle i {
+  color: var(--white);
+}
+
+.icon-box-content {
+  flex: 1;
+}
+
+.icon-box-title {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.icon-box-description {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
   margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Data & Responsive Sections
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+.data-section,
+.responsive-section {
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+#responsive-section{
+  margin-left: 150px;
+}
+
+.data-section h2,
+.responsive-section h2 {
+  color: var(--text-dark);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.data-section p,
+.responsive-section p {
+  color: var(--text-light);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.data-section .btn,
+.responsive-section .btn {
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: var(--white);
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.data-section .btn:hover,
+.responsive-section .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(187, 51, 211, 0.3);
 }
 
 /* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
+   Video Section
    ========================================================================== */
 
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
+.video-section {
+  padding: 5rem 0;
+  background: var(--white);
+}
 
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
+.video-section h2 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
 
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
+.video-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
 
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
+/* ==========================================================================
+   Pricing Section
+   ========================================================================== */
 
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
+.pricing-section {
+  padding: 5rem 0;
+  background: var(--bg-light);
+}
 
-  pre {
-    white-space: pre-wrap !important;
-  }
+.pricing-section h2 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
+.pricing-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
 
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
 
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
+.pricing-card.featured {
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: var(--white);
+}
 
-  h2,
-  h3 {
-    page-break-after: avoid;
+.pricing-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.pricing-card .price {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+
+.pricing-card ul {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-card li {
+  padding: 0.5rem 0;
+  color: var(--text-light);
+}
+
+
+.pricing-card .btn {
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.pricing-card:not(.featured) .btn {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pricing-card:not(.featured) .btn:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.pricing-card.featured .btn {
+  background: var(--white);
+  color: var(--primary-color);
+  border: none;
+}
+
+.pricing-card.featured .btn:hover {
+  background: var(--text-dark);
+  color: var(--white);
+}
+
+#premium{
+  background: white;
+}
+#premium h3 {
+  color: black;
+}
+#premium .price {
+  color: black;
+}
+/* ==================
+========================================================
+   Review Section
+   ========================================================================== */
+
+.review-section {
+  padding: 5rem 0;
+  background: var(--white);
+}
+
+.review-section h2 {
+  color: var(--text-dark);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.review-section img {
+  object-fit: cover;
+}
+
+.review-section blockquote {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.review-section .blockquote-footer {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.container-review{
+  border: 1px solid #BD32D3;
+  border-radius: 100px;
+  padding: 20px 20px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+#the-footer {
+  background: linear-gradient(34deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  color: var(--white);
+  padding: 5rem 0 2rem;
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-section h2 {
+  color: var(--white);
+  font-size: 50px;;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  margin-top: -80px;
+}
+
+.footer-section .store-buttons img {
+  height: 50px;
+  margin: 0 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-section .store-buttons img:hover {
+  transform: scale(1.1);
+}
+
+.footer-section p {
+  opacity: 0.9;
+  margin-top: 2rem;
+}
+
+.footer-section .additional-links a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section .additional-links a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+#copyright {
+  color: white;
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media (max-width: 991px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section {
+    padding-top: 100px;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .store-buttons {
+    justify-content: center;
+    display: flex;
+  }
+  
+  .features-section h2,
+  .how-it-works-section h2,
+  .pricing-section h2,
+  .review-section h2,
+  .footer-section h2 {
+    font-size: 2rem;
+  }
+  
+  .data-section .row,
+  .responsive-section .row {
+    flex-direction: column-reverse;
   }
 }
 
+@media (max-width: 767px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .feature-card,
+  .pricing-card {
+    margin-bottom: 1rem;
+  }
+  
+  .pricing-card.featured {
+    margin: 2rem 0;
+  }
+}
